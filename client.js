@@ -33,12 +33,12 @@ const employees = [
 
 // YOU SHOULD NOT NEED TO CHANGE ANYTHING ABOVE THIS POINT
 function bonusCalc ( employee ) {
-  let bonus = 0
+  let bonus = 0;
   let newArray = [{ name : "",
                 bonusPercent: 0,
                 totalCompensation : 0,
                 totalBonus : 0
-  }]
+  }];
   if (employee.reviewRating === 2) {
     bonus = 0;
   } else if (employee.reviewRating === 3){
@@ -47,17 +47,42 @@ function bonusCalc ( employee ) {
     bonus = 5;
   } else if (employee.reviewRating === 5){
     bonus = 10;
-  }
+  }//end ratings
 
   if(employee.employeeNumber.length === 4){
-    bonus += 5
-  }
+    bonus += 5;
+  }//end employee digits
 
   if(employee.annualSalary > 65000){
     bonus -= 1;
+  }//end salary check
+
+  if (bonus > 13){
+    bonus = 13;
+  }//end 13 cap
+
+  if(bonus < 0){
+    bonus = 0;
   }
 
+  newArray.bonusPercent = bonus;
+  newArray.totalCompensation = Number(employee.annualSalary) + Math.round(employee.annualSalary * bonus / 100)
+  newArray.totalBonus = Math.round(employee.annualSalary * bonus / 100);
+  newArray.name = employee.name;
+
+  return newArray;
+
 }//end bonusCalc
+
+function giveBonuses(employees){
+  let payDay = [];
+  for ( i=0; i<employees.length; i++ ){
+    payDay.push(bonusCalc(employees[ i ]));
+  }//end for
+  return payDay;
+}//end giveBonuses
+
+console.log(giveBonuses(employees));
 
 // Take small steps! Don't write a for loop and two functions that do all of the calculations right away.
 // This problem is massive! Break the problem down. Use the debugger.

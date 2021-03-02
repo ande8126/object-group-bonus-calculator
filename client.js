@@ -32,6 +32,32 @@ const employees = [
 ];
 
 // YOU SHOULD NOT NEED TO CHANGE ANYTHING ABOVE THIS POINT
+function bonusCalc ( employee ) {
+  let bonus = 0
+  let newArray = [{ name : "",
+                bonusPercent: 0,
+                totalCompensation : 0,
+                totalBonus : 0
+  }]
+  if (employee.reviewRating === 2) {
+    bonus = 0;
+  } else if (employee.reviewRating === 3){
+    bonus = 4;
+  } else if (employee.reviewRating === 4){
+    bonus = 5;
+  } else if (employee.reviewRating === 5){
+    bonus = 10;
+  }
+
+  if(employee.employeeNumber.length === 4){
+    bonus += 5
+  }
+
+  if(employee.annualSalary > 65000){
+    bonus -= 1;
+  }
+
+}//end bonusCalc
 
 // Take small steps! Don't write a for loop and two functions that do all of the calculations right away.
 // This problem is massive! Break the problem down. Use the debugger.

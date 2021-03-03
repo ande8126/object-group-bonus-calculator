@@ -82,6 +82,21 @@ function giveBonuses(employees){
   return payDay;
 }//end giveBonuses
 
+$( document ).ready( readyNow );
+
+function readyNow(){ 
+
+  $ ('#applyBonus').on('click', showBonus) 
+
+} 
+
+function showBonus (){
+  let bonuses = giveBonuses(employees)
+  $("#bonusTable").append("<tr class=\"header\"><th>Name</th><th width=8%>Employee Number</th><th width=8%>Review Rating</th><th>Base Salary</th><th width=8%>Bonus %</th><th>Bonus $</th><th>Total Compensation</th></tr>")
+  for(let i = 0; i < bonuses.length; i++){
+  $("#bonusTable").append("<tr><td>" + bonuses[i].name + "</td><td>"+ employees[i].employeeNumber + "</td><td>" + employees[i].reviewRating + "</td><td>$"+ employees[i].annualSalary + "</td><td>" + bonuses[i].bonusPercent + "%</td><td>$" + bonuses[i].totalBonus + "</td><td>$" + bonuses[i].totalCompensation + "</td></tr>")
+  }//end append
+}//end showBonus
 console.log(giveBonuses(employees));
 
 // Take small steps! Don't write a for loop and two functions that do all of the calculations right away.

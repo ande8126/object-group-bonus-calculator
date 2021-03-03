@@ -3,7 +3,6 @@ body {
     background-image: url("money.png");
     background-repeat: no-repeat;
     background-position-x: 50%;
-    margin: 0 10%;
 }
 
 .head {
@@ -20,6 +19,7 @@ h1 {
     margin: 0px;
     color: rgb(139, 136, 136);
 }
+
 
 .main {
   display: flex;
